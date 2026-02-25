@@ -17,7 +17,7 @@ locals {
 }
 
 unit "core_databricks_resource_group" {
-  source = "git::https://github.com/otan1010/dbx-iac-modules-demo1.git//units/resource_group?ref=main"
+  source = "git::https://github.com/otan1010/dbx-iac-modules-demo1.git//units/azure_resource_group?ref=main"
   path = "rg-${local.dbx_name_core}"
   values = {
     version = "main"
@@ -27,7 +27,7 @@ unit "core_databricks_resource_group" {
 }
 
 unit "managed_databricks_resource_group" {
-  source = "git::https://github.com/otan1010/dbx-iac-modules-demo1.git//units/resource_group?ref=main"
+  source = "git::https://github.com/otan1010/dbx-iac-modules-demo1.git//units/azure_resource_group?ref=main"
   path = "rg-${local.dbx_name_core}-managed"
   values = {
     version = "main"
