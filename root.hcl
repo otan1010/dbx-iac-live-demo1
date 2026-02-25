@@ -3,7 +3,6 @@ locals {
   sub_id   = local.sub_vars.locals.subscription_id
 }
 
-
 # Generate an AZ provider block
 generate "provider" {
   path      = "provider.tf"
