@@ -6,13 +6,16 @@ locals {
   region = local.region_vars.locals.region
 
   rg_prefix = "rg"
+
+  databricks_resource_group_core = "${local.rg_prefix}-dbx-${local.env}-${local.region}"
+  databricks_resource_group_managed = "${local.rg_prefix}-dbx-${local.env}-${local.region}-managed"
 }
 
-unit "resource_group" {
+unit "core_databricks_resource_group" {
   source = "git::https://github.com/otan1010/dbx-iac-modules-demo1.git//units/resource_group?ref=main"
-  path = "${local.rg_prefix}-dbx-${local.env}-${local.region}"
+  path = "${local.databricks_resource_group_core}"
   values = {
-    name = "${local.rg_prefix}-dbx-${local.env}-${local.region}"
+    name = "${local.databricks_resource_group_core}"
     region = "${local.region}"
   }
 }
