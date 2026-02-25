@@ -1,6 +1,6 @@
 locals {
   subscription_vars = read_terragrunt_config(find_in_parent_folders("subscription.hcl"))
-  subscription_id   = local.subscription_vars.locals.subscription_id
+  subscription_id   = local.subscription_vars.locals.id
 }
 
 # Generate an AZ provider block
@@ -14,3 +14,4 @@ provider "azurerm" {
 }
 EOF
 }
+
