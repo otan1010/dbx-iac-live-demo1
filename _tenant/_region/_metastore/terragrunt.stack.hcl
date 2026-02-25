@@ -13,10 +13,10 @@ locals {
 
 unit "databricks_metastore_primary" {
   source = "git::https://github.com/otan1010/dbx-iac-modules-demo1.git//units/databricks_metastore?ref=main"
-  path = "rg-${local.metastore_name_primary}"
+  path = "${local.metastore_name_primary}"
   values = {
     version = "main"
-    name = "rg-${local.metastore_name_primary}"
+    name = "${local.metastore_name_primary}"
     region = "${local.region}"
   }
 }
