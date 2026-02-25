@@ -5,17 +5,15 @@ locals {
   region_vars = read_terragrunt_config(find_in_parent_folders("region.hcl"))
   region = local.region_vars.locals.region
 
-  rg_prefix = "rg"
-
-  databricks_resource_group_core = "${local.rg_prefix}-dbx-${local.env}-${local.region}"
-  databricks_resource_group_managed = "${local.rg_prefix}-dbx-${local.env}-${local.region}-managed"
+  dbx_name_core = "dbx-${local.env}-${local.region}"
+  dbx_name_managed = "dbx-${local.env}-${local.region}-managed"
 }
 
 unit "core_databricks_resource_group" {
   source = "git::https://github.com/otan1010/dbx-iac-modules-demo1.git//units/resource_group?ref=main"
-  path = "${local.databricks_resource_group_core}"
+  path = "rg-${local.dbx_name_core}
   values = {
-    name = "${local.databricks_resource_group_core}"
+    name = "rg-${local.dbx_name_core}
     region = "${local.region}"
   }
 }
