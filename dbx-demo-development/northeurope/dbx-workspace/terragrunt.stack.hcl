@@ -14,5 +14,6 @@ unit "resource_group" {
   path = "resource_group123"
   values = {
     name = "rg-${local.rg_name}-${local.env}-${local.region}"
+    region = "${local.region}"
   }
 }
