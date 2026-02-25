@@ -17,3 +17,12 @@ unit "core_databricks_resource_group" {
     region = "${local.region}"
   }
 }
+
+unit "managed_databricks_resource_group" {
+  source = "git::https://github.com/otan1010/dbx-iac-modules-demo1.git//units/resource_group?ref=main"
+  path = "rg-${local.dbx_name_core}-managed"
+  values = {
+    name = "rg-${local.dbx_name_core}-managed"
+    region = "${local.region}"
+  }
+}
