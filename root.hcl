@@ -1,5 +1,14 @@
+#locals {
+#  sub_vars = read_terragrunt_config(find_in_parent_folders("subscription.hcl"))
+#  sub_id   = local.sub_vars.locals.subscription_id
+#}
+
 locals {
   sub_vars = read_terragrunt_config(find_in_parent_folders("subscription.hcl"))
+  region_vars = read_terragrunt_config(find_in_parent_folders("region.hcl"))
+
+  environment_abbreviation = local.sub_vars.locals.environment_abbreviation
+  region                   = local.region_vars.locals.region
   sub_id   = local.sub_vars.locals.subscription_id
 }
 
@@ -26,3 +35,12 @@ remote_state {
     if_exists = "overwrite_terragrunt"
   }
 }
+
+############
+# Optional: expose common values to children via inputs
+# (children can merge/override as needed)
+inputs = {
+  environment_abbreviation = local.environment_abbreviation
+  region                   = local.region
+}
+############
