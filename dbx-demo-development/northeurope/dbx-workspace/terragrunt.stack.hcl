@@ -11,7 +11,7 @@ locals {
 
 unit "core_databricks_resource_group" {
   source = "git::https://github.com/otan1010/dbx-iac-modules-demo1.git//units/resource_group?ref=main"
-  path = "rg-${local.dbx_name_core}
+  path = "rg-${local.dbx_name_core}"
   values = {
     name = "rg-${local.dbx_name_core}"
     region = "${local.region}"
