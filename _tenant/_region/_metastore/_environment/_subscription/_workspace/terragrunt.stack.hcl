@@ -7,8 +7,11 @@ locals {
   region_vars = read_terragrunt_config(find_in_parent_folders("region.hcl"))
   region = local.region_vars.locals.name
 
-  subscription_vars = read_terragrunt_config(find_in_parent_folders("subscription.hcl"))
-  environment = local.subscription_vars.locals.name
+  environment_vars = read_terragrunt_config(find_in_parent_folders("environment.hcl"))
+  environment = local.environment_vars.locals.name
+
+  #subscription_vars = read_terragrunt_config(find_in_parent_folders("subscription.hcl"))
+  #environment = local.subscription_vars.locals.name
 
   dbx_name_core = "dbx-${local.environment}-${local.region}"
 }
