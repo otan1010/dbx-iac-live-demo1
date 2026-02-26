@@ -1,5 +1,5 @@
 locals {
-  databricks_account_vars = read_terragrunt_config(find_in_parent_folders("databricks_account.hcl"))
+  databricks_account_vars = read_terragrunt_config(find_in_parent_folders("account_dbx.hcl"))
   databricks_account_id = local.databricks_account_vars.locals.id
 }
 
