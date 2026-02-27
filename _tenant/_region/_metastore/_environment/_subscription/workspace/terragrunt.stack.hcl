@@ -10,15 +10,27 @@ locals {
   environment_vars = read_terragrunt_config(find_in_parent_folders("environment.hcl"))
   environment = local.environment_vars.locals.name
 
-  dbx_name_core = "dbx-${local.environment}-${local.region}"
+  rg_name = "rg-dbx-${local.environment}-${local.region}"
+  ws_name = "ws-dbx-${local.environment}-${local.region}"
 }
 
 unit "core_databricks_resource_group" {
   source = "git::https://github.com/otan1010/dbx-iac-modules-demo1.git//units/azure_resource_group?ref=main"
-  path = "rg-${local.dbx_name_core}"
+  path = "${local.rg_name}"
   values = {
     version = "main"
-    name = "rg-${local.dbx_name_core}"
+    name = "${local.rg_name}"
     region = "${local.region}"
+  }
+}
+
+unit "core_databricks_workspace" {
+  source = "git::https://github.com/otan1010/dbx-iac-modules-demo1.git//units/databricks_workspace?ref=main"
+  path = "${local.ws_name}"
+  values = {
+    version = "main"
+    name = "${local.ws_name}"
+    region = "${local.region}"
+    rg = "${local.rg_name}"
   }
 }
