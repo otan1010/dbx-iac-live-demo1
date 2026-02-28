@@ -4,7 +4,7 @@ locals {
 }
 
 # Generate an AZ provider block
-generate "provider" {
+generate "az_provider" {
   path      = "az_provider.tf"
   if_exists = "overwrite_terragrunt"
   contents  = <<EOF

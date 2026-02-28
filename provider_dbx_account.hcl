@@ -4,7 +4,7 @@ locals {
 }
 
 # Generate an DBX provider block
-generate "provider" {
+generate "dbx_account_provider" {
   path      = "databricks_account_provider.tf"
   if_exists = "overwrite_terragrunt"
   contents  = <<EOF
